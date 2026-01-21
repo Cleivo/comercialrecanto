@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  php:
+    image: php:8.2-apache
+    container_name: comercial_php
+    restart: always
+    networks:
+      - traefik_public
+    volumes:
+      - ./app:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_public"
+
+      # Router HTTPS
+      - "traefik.http.routers.comercial.rule=Host(`comercial.recantosocial.com.br`)"
+      - "traefik.http.routers.comercial.entrypoints=websecure"
+      - "traefik.http.routers.comercial.tls.certresolver=le"
+
+      # Service
+      - "traefik.http.services.comercial.loadbalancer.server.port=80"
+
+networks:
+  traefik_public:
+    external: true
