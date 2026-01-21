@@ -124,7 +124,7 @@
 
         <hr class="border-light" />
 
-        <div class="mb-2">Valor da parcela</div>
+        <div class="mb-2">Resumo da proposta:</div>
         <div class="valor" id="valorParcela"></div>
       </div>
 
@@ -171,9 +171,9 @@
                 }
 
                 // Atualizo os valores na tela
-                document.getElementById('valorTotal').innerText = data.valorTotal;
+                document.getElementById('valorTotal').innerText = "R$ " +data.valorTotal;
 
-                document.getElementById('valorParcela').innerText = data.parcelas + 'x de ' + data.valorParcela;
+                document.getElementById('valorParcela').innerText = data.parcelas + 'x de R$ ' + data.valorParcela;
 
                 document.getElementById('resultado').classList.remove('d-none');
             },

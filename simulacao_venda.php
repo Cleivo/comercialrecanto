@@ -25,7 +25,7 @@
     $sql = "SELECT cfg.jurofinan, cfg.valorm2, t.area 
                 FROM lot_imoveis as t
                 INNER JOIN config as cfg on cfg.codemp = t.codemp
-                WHERE setor = :setor AND quadra = :quadra AND lote = :lote";
+                WHERE setor = :setor AND quadra = :quadra AND lote = :lote AND status = 1";
     $stmt = $conexao->prepare($sql);
     $stmt->bindParam(':setor', $setor);
     $stmt->bindParam(':quadra', $quadra);
@@ -45,6 +45,7 @@
 
 
         echo json_encode([
+            'entrada' => number_format($entrada, 2, ',', '.'),
             'valorTotal' => number_format($valorTotal, 2, ',', '.'),
             'parcelas' => $parcelas,
             'valorParcela' => number_format($valorParcela, 2, ',', '.')
