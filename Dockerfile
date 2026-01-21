@@ -30,7 +30,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
 
 # Habilita mod_rewrite do Apache
-RUN a2enmod rewrite  
+RUN a2enmod rewrite
 
 # Exponha a porta 80 (padrão Apache)
 EXPOSE 80
