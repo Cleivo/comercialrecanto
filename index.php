@@ -66,7 +66,7 @@
 
                     $sql="SELECT * 
                             FROM lot_imoveis 
-                            WHERE codemp=12 
+                            WHERE codemp=12 and status=1
                             ORDER BY setor, quadra, lote ASC";
                     //echo $sql."<br>";
                     try {
