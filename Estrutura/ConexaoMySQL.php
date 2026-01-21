@@ -61,6 +61,7 @@
             $stmt = $this->prepare($sql);
     
             if ($stmt) {
+                $stmt->execute();
                 $data = $stmt->fetchAll(PDO::FETCH_ASSOC); // Busca os dados como array associativo
                 return json_encode($data); // Converte para JSON e retorna
             } else {
