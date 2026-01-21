@@ -21,15 +21,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY . /var/www/html
 
 
-ARG APP_ENV=production
-# apontar o arquivo .htaccess conforme o ambiente
-# essa variável APP_ENV é passada como argumento de build no GitHub Actions no caminho sysgeback/.github/workflows/docker.yml
 
-RUN if [ "$APP_ENV" = "production" ]; then \
-        cp .htaccess.server .htaccess; \
-    else \
-        cp .htaccess.local .htaccess; \
-    fi
 
 
 # Ajusta permissões (opcional, mas recomendado)
