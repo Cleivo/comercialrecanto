@@ -43,7 +43,7 @@
       <div class="card shadow-sm">
         <div class="card-body">
           <h5 class="mb-3 text-center">Simulação de Venda</h5>
-
+          <h6>Fase de Pré-lançamento! Aproveite!</h6>
           <!-- Terreno -->
           <div class="mb-3">
             <label class="form-label">Terreno</label>
@@ -75,10 +75,13 @@
                         echo $e->getMessage();
                     }
                     
-                    
                     $imoveis = json_decode($result, true);
                     foreach ($imoveis as $imovel) {
-                        echo "<option setor='{$imovel['setor']}' quadra='{$imovel['quadra']}' lote='{$imovel['lote']}' value='{$imovel['area']}'>Quadra {$imovel['quadra']} - Lote {$imovel['lote']} – {$imovel['area']}m²</option>";
+                    $marcacao="";    
+                    if($imovel['garantia']=='1') {
+                            $marcacao="* ";;
+                        }
+                        echo "<option setor='{$imovel['setor']}' quadra='{$imovel['quadra']}' lote='{$imovel['lote']}' value='{$imovel['area']}'>$marcacao Quadra {$imovel['quadra']} - Lote {$imovel['lote']} – {$imovel['area']}m²</option>";
                     }
                 ?>
               
