@@ -66,7 +66,7 @@
 
                     $sql="SELECT * 
                             FROM lot_imoveis 
-                            WHERE codemp=12 and status=1
+                            WHERE codemp=12 
                             ORDER BY setor, quadra, lote ASC";
                     //echo $sql."<br>";
                     try {
@@ -77,11 +77,15 @@
                     
                     $imoveis = json_decode($result, true);
                     foreach ($imoveis as $imovel) {
-                    $marcacao="";    
-                    if($imovel['garantia']=='1') {
+                      $marcacao="";    
+                      if($imovel['garantia']=='1') {
                             $marcacao="* ";;
-                        }
-                        echo "<option setor='{$imovel['setor']}' quadra='{$imovel['quadra']}' lote='{$imovel['lote']}' value='{$imovel['area']}'>$marcacao Quadra {$imovel['quadra']} - Lote {$imovel['lote']} – {$imovel['area']}m²</option>";
+                      }
+                      $disabled=" disabled ";
+                      if ($imovel['status'] == '1') {
+                        $disabled=" ";
+                      }
+                      echo "<option setor='{$imovel['setor']}' quadra='{$imovel['quadra']}' lote='{$imovel['lote']}' value='{$imovel['area']}' $disabled>$marcacao Quadra {$imovel['quadra']} - Lote {$imovel['lote']} – {$imovel['area']}m²</option>";
                     }
                 ?>
               
